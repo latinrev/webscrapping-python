@@ -8,6 +8,9 @@ Clone the repo
 
 ```git clone https://github.com/latinrev/webscrapping-python.git```
 
+With the console on the folder do
+
+```  python app.py ```
 
 # How does it work?
 It uses python library Beautiful Soup 4(Compatible with python 3+) which it uses to get an image from the website.
