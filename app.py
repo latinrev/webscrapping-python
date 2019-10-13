@@ -1,11 +1,12 @@
 import urllib.request
 from bs4 import BeautifulSoup
-
+import os
 page = urllib.request.urlopen("https://twitter.com/DolarTrue_")
 soup = BeautifulSoup(page,features='lxml')
 with open ('text.html','w')as fp:
     fp.write(str(soup.encode('utf-8')))
 wholePage = open ('text.html','r').read()
+os.remove('text.html')
 startPoint = wholePage.find('Dolar en BsS : ')
 endPoint = wholePage.find('.',startPoint)
 dolarPrice = wholePage[startPoint:endPoint+3]
