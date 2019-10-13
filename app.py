@@ -1,18 +1,20 @@
 import urllib.request
 from bs4 import BeautifulSoup
-import pytesseract
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'  # this should be done only once 
-page = urllib.request.urlopen("https://y7s2057b6d3dt2eur.wordssl.net/");
-soup = BeautifulSoup(page,features='lxml');
-all_links = soup.find_all('img');
-for link in all_links:
-    if 'banner_4' in link.get('src') :
-        urllib.request.urlretrieve(link.get('src'),'banner.png');
-        price = pytesseract.image_to_string('./banner.png')
-        print("""////////////////////////////////////////////////////////
-                |                                                       |
-                |                                                       |
-                |                    DOLAR TODAY PRICE                  |
-                |                                                       |
-                |///////////////////////////////////////////////////////|""")
-print(price);
+
+page = urllib.request.urlopen("https://twitter.com/DolarTrue_")
+soup = BeautifulSoup(page,features='lxml')
+with open ('text.html','w')as fp:
+    fp.write(str(soup.encode('utf-8')))
+wholePage = open ('text.html','r').read()
+startPoint = wholePage.find('Dolar en BsS : ')
+endPoint = wholePage.find('.',startPoint)
+dolarPrice = wholePage[startPoint:endPoint+3]
+print("""
+  _____   ____  _               _____    _____  _____  _____ _____ ______ 
+ |  __ \ / __ \| |        /\   |  __ \  |  __ \|  __ \|_   _/ ____|  ____|
+ | |  | | |  | | |       /  \  | |__) | | |__) | |__) | | || |    | |__   
+ | |  | | |  | | |      / /\ \ |  _  /  |  ___/|  _  /  | || |    |  __|  
+ | |__| | |__| | |____ / ____ \| | \ \  | |    | | \ \ _| || |____| |____ 
+ |_____/ \____/|______/_/    \_\_|  \_\ |_|    |_|  \_\_____\_____|______|
+__________________________________________________________________________\n""")
+print(dolarPrice)
