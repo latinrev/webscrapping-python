@@ -13,7 +13,8 @@ With the console on the folder do
 
 # How does it work?
 It uses python library Beautiful Soup 4(Compatible with python 3+) which it uses to get the entirety of a twitter user page.
-Then uses a local file created as text.html and reads through it to find keywords which then are used to display the price on the screen
+We use threading to check if the price has been found already and if not display a loading animation
+we then read the page as utf-8 and we read through it to find keywords which then are used to display the price on the screen
 
 # That's a really nice big ASCII title how did you do it? 
 [Nice ASCII TEXT HERE](http://www.patorjk.com/software/taag)
